@@ -99,7 +99,6 @@
 				975B9A0ACFC836643AC92D7C /* Pods-InvestocksTests.debug.xcconfig */,
 				828B3E929AEA2323DBE76D7F /* Pods-InvestocksTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +208,7 @@
 				444AAAA827A536CE00EEF1D9 /* Frameworks */,
 				444AAAA927A536CE00EEF1D9 /* Resources */,
 				08B053C6E03105C8CD889BB2 /* [CP] Embed Pods Frameworks */,
+				444AAAE227A540A300EEF1D9 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -344,6 +344,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Investocks/Pods-Investocks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		444AAAE227A540A300EEF1D9 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		85663CA97C574602FEC6B8A3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
