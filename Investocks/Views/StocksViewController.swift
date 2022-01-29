@@ -12,7 +12,10 @@ class StocksViewController: UIViewController {
 
   // MARK: - Properties
 
-  /// Lists the stocks' information.
+  /// Provides to create an instance of the **StocksViewModel**.
+  private let viewModel = StocksViewModel()
+
+  /// Lists the information of stocks.
   private lazy var tableViewStocks: UITableView = {
     let tableView = UITableView()
     tableView.register(
@@ -31,9 +34,17 @@ class StocksViewController: UIViewController {
     tableViewStocks.dataSource = self
 
     setupConstraints()
+
+    viewModel.initFetch()
+
+    viewModel.reloadTableViewClosure = { () in
+      DispatchQueue.main.async { [weak self] in
+        self?.tableViewStocks.reloadData()
+      }
+    }
   }
 
-  // MARK: - Helpers
+  // MARK: - Methods
 
   /// Allows to setup constraints of **UIView** elements using SnapKit.
   private func setupConstraints() {
@@ -48,7 +59,7 @@ extension StocksViewController: UITableViewDataSource {
     _ tableView: UITableView,
     numberOfRowsInSection section: Int)
   -> Int {
-    1
+    viewModel.stocks.count
   }
 
   func tableView(
@@ -61,7 +72,15 @@ extension StocksViewController: UITableViewDataSource {
         fatalError()
       }
 
-    cell.labelStock.text = "AAPL"
+    cell.configure(with: viewModel.stocks[indexPath.row])
+
     return cell
+  }
+
+  func tableView(
+    _ tableView: UITableView,
+    heightForRowAt indexPath: IndexPath)
+  -> CGFloat {
+    UITableView.automaticDimension
   }
 }

@@ -1,0 +1,138 @@
+//
+//  StocksCell.swift
+//  Investocks
+//
+//  Created by Yuşa on 29.01.2022.
+//
+
+import SnapKit
+import UIKit
+
+class StocksCell: UITableViewCell {
+
+  // MARK: - Properties
+
+  /// Presents the identifier of **UITableViewCell**.
+  static let identifier = "stocksCell"
+
+  /// Holds the stock's current status.
+  lazy var imageViewStatusChange: UIImageView = {
+    let imageView = UIImageView()
+    return imageView
+  }()
+
+  /// Holds the name of stock.
+  lazy var labelStock: UILabel = {
+    let label = UILabel()
+    return label
+  }()
+
+  /// Holds the last update time of stock.
+  lazy var labelLastUpdateTime: UILabel = {
+    let label = UILabel()
+    label.font = .systemFont(ofSize: 13)
+    return label
+  }()
+
+  /// Holds the price of stock.
+  lazy var labelPrice: UILabel = {
+    let label = UILabel()
+    return label
+  }()
+
+  /// Holds the status change of stock.
+  lazy var labelStatusChange: UILabel = {
+    let label = UILabel()
+    return label
+  }()
+
+  // MARK: - Lifecycle
+
+  override init(
+    style: UITableViewCell.CellStyle,
+    reuseIdentifier: String?) {
+      super.init(
+        style: style,
+        reuseIdentifier: reuseIdentifier)
+
+      contentView.addSubview(imageViewStatusChange)
+      contentView.addSubview(labelStock)
+      contentView.addSubview(labelLastUpdateTime)
+      contentView.addSubview(labelPrice)
+      contentView.addSubview(labelStatusChange)
+    }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    setupConstraints()
+  }
+
+  override func prepareForReuse() {
+    super.prepareForReuse()
+
+    imageViewStatusChange.image = nil
+    labelStock.text = nil
+    labelLastUpdateTime.text = nil
+    labelPrice.text = nil
+    labelStatusChange.text = nil
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: - Methods
+
+  /// Allows to setup constraints of **UIView** elements using SnapKit.
+  private func setupConstraints() {
+    imageViewStatusChange.snp.makeConstraints { make in
+      make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+      make.width.height.equalTo(contentView.bounds.height - 25)
+      make.centerY.equalToSuperview()
+    }
+
+    labelStock.snp.makeConstraints { make in
+      make.top.equalTo(contentView.safeAreaLayoutGuide).inset(5)
+      make.left.equalTo(imageViewStatusChange.snp.right).offset(10)
+    }
+
+    labelLastUpdateTime.snp.makeConstraints { make in
+      make.left.equalTo(imageViewStatusChange.snp.right).offset(10)
+      make.top.equalTo(labelStock.snp.bottom).offset(5)
+      make.bottom.equalToSuperview().offset(-5)
+    }
+
+    labelStatusChange.snp.makeConstraints { make in
+      make.right.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+      make.centerY.equalToSuperview()
+    }
+
+    labelPrice.snp.makeConstraints { make in
+      make.right.equalTo(labelStatusChange.snp.left).inset(-50)
+      make.centerY.equalToSuperview()
+    }
+  }
+
+  /// Provides to populate cell with its corresponding stock information.
+  /// - Parameter stock: Holds the information about stock.
+  func configure(with stock: Stock) {
+    guard let stockChange = stock.pdd,
+          let stockName = stock.tke,
+          let stockUpdatedTime = stock.clo,
+          let stockPrice = stock.las else {
+            return
+          }
+
+    let isNegative = stockChange.toDouble() < 0
+    let changePercentage = isNegative ? stockChange.removeFirstChar() : stockChange
+    let changeImage = isNegative ? Constants.downArrow : Constants.upArrow
+
+    imageViewStatusChange.image = UIImage(named: changeImage)
+    labelStock.text = stockName
+    labelLastUpdateTime.text = stockUpdatedTime
+    labelPrice.text = stockPrice
+    labelStatusChange.text = "%\(changePercentage)"
+    labelStatusChange.textColor = isNegative ? .red : .green
+  }
+}
