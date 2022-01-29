@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		444AAAAF27A536CE00EEF1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAAE27A536CE00EEF1D9 /* AppDelegate.swift */; };
 		444AAAB127A536CE00EEF1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAB027A536CE00EEF1D9 /* SceneDelegate.swift */; };
-		444AAAB327A536CE00EEF1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAB227A536CE00EEF1D9 /* ViewController.swift */; };
+		444AAAB327A536CE00EEF1D9 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAB227A536CE00EEF1D9 /* StocksViewController.swift */; };
 		444AAAB827A536D000EEF1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 444AAAB727A536D000EEF1D9 /* Assets.xcassets */; };
 		444AAABB27A536D000EEF1D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444AAAB927A536D000EEF1D9 /* LaunchScreen.storyboard */; };
 		444AAAC627A536D000EEF1D9 /* InvestocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAC527A536D000EEF1D9 /* InvestocksTests.swift */; };
 		444AAAD027A536D000EEF1D9 /* InvestocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAACF27A536D000EEF1D9 /* InvestocksUITests.swift */; };
 		444AAAD227A536D000EEF1D9 /* InvestocksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAD127A536D000EEF1D9 /* InvestocksUITestsLaunchTests.swift */; };
+		444AAAE627A5476F00EEF1D9 /* StocksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAE527A5476F00EEF1D9 /* StocksCell.swift */; };
 		68ACE8BB79C44F31AE45C857 /* Pods_Investocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697EBADA33B8669995C99C2E /* Pods_Investocks.framework */; };
 		7C94CAA4AE8426EC8311FAE8 /* Pods_InvestocksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF239786AF87176ECB978A7 /* Pods_InvestocksTests.framework */; };
 		FEDBC2D4092B143C6DF27470 /* Pods_Investocks_InvestocksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AC9957EF4F5770AF4B57D /* Pods_Investocks_InvestocksUITests.framework */; };
@@ -43,7 +44,7 @@
 		444AAAAB27A536CE00EEF1D9 /* Investocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444AAAAE27A536CE00EEF1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		444AAAB027A536CE00EEF1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		444AAAB227A536CE00EEF1D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		444AAAB227A536CE00EEF1D9 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
 		444AAAB727A536D000EEF1D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		444AAABA27A536D000EEF1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		444AAABC27A536D000EEF1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		444AAACB27A536D000EEF1D9 /* InvestocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvestocksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		444AAACF27A536D000EEF1D9 /* InvestocksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestocksUITests.swift; sourceTree = "<group>"; };
 		444AAAD127A536D000EEF1D9 /* InvestocksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestocksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		444AAAE527A5476F00EEF1D9 /* StocksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksCell.swift; sourceTree = "<group>"; };
 		697EBADA33B8669995C99C2E /* Pods_Investocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828B3E929AEA2323DBE76D7F /* Pods-InvestocksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestocksTests.release.xcconfig"; path = "Target Support Files/Pods-InvestocksTests/Pods-InvestocksTests.release.xcconfig"; sourceTree = "<group>"; };
 		975B9A0ACFC836643AC92D7C /* Pods-InvestocksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestocksTests.debug.xcconfig"; path = "Target Support Files/Pods-InvestocksTests/Pods-InvestocksTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +176,7 @@
 		444AAAE027A537BA00EEF1D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				444AAAB227A536CE00EEF1D9 /* ViewController.swift */,
+				444AAAE327A5476400EEF1D9 /* Stocks */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +186,23 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		444AAAE327A5476400EEF1D9 /* Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				444AAAB227A536CE00EEF1D9 /* StocksViewController.swift */,
+				444AAAE427A5476A00EEF1D9 /* StocksCell */,
+			);
+			path = Stocks;
+			sourceTree = "<group>";
+		};
+		444AAAE427A5476A00EEF1D9 /* StocksCell */ = {
+			isa = PBXGroup;
+			children = (
+				444AAAE527A5476F00EEF1D9 /* StocksCell.swift */,
+			);
+			path = StocksCell;
 			sourceTree = "<group>";
 		};
 		75C95AD0DD3A553EF42E6CCA /* Frameworks */ = {
@@ -453,8 +472,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				444AAAB327A536CE00EEF1D9 /* ViewController.swift in Sources */,
+				444AAAB327A536CE00EEF1D9 /* StocksViewController.swift in Sources */,
 				444AAAAF27A536CE00EEF1D9 /* AppDelegate.swift in Sources */,
+				444AAAE627A5476F00EEF1D9 /* StocksCell.swift in Sources */,
 				444AAAB127A536CE00EEF1D9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

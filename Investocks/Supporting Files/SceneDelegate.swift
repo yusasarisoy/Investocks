@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       // Set ViewController as root view controller.
       window = UIWindow(frame: windowScene.coordinateSpace.bounds)
       window?.windowScene = windowScene
-      window?.rootViewController = ViewController()
+      window?.rootViewController = StocksViewController()
       window?.makeKeyAndVisible()
     }
 
