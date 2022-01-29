@@ -10,27 +10,70 @@ import XCTest
 
 class InvestocksTests: XCTestCase {
 
+  var urlSession: URLSession?
+  let networkManager = NetworkManager.shared
+
   override func setUpWithError() throws {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    try super.setUpWithError()
+    urlSession = URLSession(configuration: .default)
   }
 
   override func tearDownWithError() throws {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    urlSession = nil
+    try super.tearDownWithError()
   }
 
-  func testExample() throws {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    // Any test you write for XCTest can be annotated as throws and async.
-    // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-    // Mark your test async to allow awaiting for asynchronous code to complete.
-    // Check the results with assertions afterwards.
-  }
-
-  func testPerformanceExample() throws {
-    // This is an example of a performance test case.
-    self.measure {
-      // Put the code you want to measure the time of here.
+  func testGetStocksName() throws {
+    // given
+    let stringURL = "\(Constants.url)/ForeksMobileInterviewSettings"
+    guard let url = URL(string: stringURL) else {
+      return
     }
+
+    let promise = expectation(description: "Status code: 200")
+
+    // when
+    let dataTask = urlSession?.dataTask(with: url) { _, response, error in
+      // then
+      if let error = error {
+        XCTFail("Error: \(error.localizedDescription)")
+        return
+      } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+        if statusCode == 200 {
+          promise.fulfill()
+        } else {
+          XCTFail("Status code: \(statusCode)")
+        }
+      }
+    }
+    dataTask?.resume()
+
+    wait(for: [promise], timeout: 5)
+  }
+
+  func testGetStocksInformation() throws {
+    // given
+    let stringURL = "\(Constants.url)/ForeksMobileInterview?fields=pdd,las&stcs=XGLD~BRENT"
+    guard let url = URL(string: stringURL) else {
+      return
+    }
+
+    let promise = expectation(description: "Completion handler invoked")
+    var statusCode: Int?
+    var responseError: Error?
+
+    // when
+    let dataTask = urlSession?.dataTask(with: url) { _, response, error in
+      statusCode = (response as? HTTPURLResponse)?.statusCode
+      responseError = error
+      promise.fulfill()
+    }
+
+    dataTask?.resume()
+    wait(for: [promise], timeout: 5)
+
+    // then
+    XCTAssertNil(responseError)
+    XCTAssertEqual(statusCode, 200)
   }
 }
