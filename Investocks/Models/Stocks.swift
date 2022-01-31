@@ -8,6 +8,13 @@
 import Foundation
 
 struct Stocks: Codable {
-  let l: [Stock]
-  let z: String?
+  let list: [Stock]
+  let value: String?
+}
+
+extension Stocks {
+  enum CodingKeys: String, CodingKey {
+    case list = "l"
+    case value = "z"
+  }
 }

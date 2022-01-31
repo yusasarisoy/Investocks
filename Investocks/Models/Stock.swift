@@ -8,5 +8,5 @@
 import Foundation
 
 struct Stock: Codable {
-  let tke, clo, pdd, las: String?
+  let tke, ddi, low, hig, buy, sel, pdc, cei, flo, gco, clo, pdd, las: String?
 }
