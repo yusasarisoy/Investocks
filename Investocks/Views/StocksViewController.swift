@@ -21,6 +21,10 @@ class StocksViewController: UIViewController {
     tableView.register(
       StocksCell.self,
       forCellReuseIdentifier: StocksCell.identifier)
+    tableView.register(
+      HeaderView.self,
+      forHeaderFooterViewReuseIdentifier: HeaderView.identifier)
+
     view.addSubview(tableView)
 
     return tableView
@@ -31,6 +35,7 @@ class StocksViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    tableViewStocks.delegate = self
     tableViewStocks.dataSource = self
 
     setupConstraints()
@@ -82,5 +87,25 @@ extension StocksViewController: UITableViewDataSource {
     heightForRowAt indexPath: IndexPath)
   -> CGFloat {
     UITableView.automaticDimension
+  }
+}
+
+extension StocksViewController: UITableViewDelegate {
+  func tableView(
+    _ tableView: UITableView,
+    viewForHeaderInSection section: Int)
+  -> UIView? {
+    guard let view = tableView.dequeueReusableHeaderFooterView(
+      withIdentifier: HeaderView.identifier) as? HeaderView else {
+        return UIView()
+      }
+    return view
+  }
+
+  func tableView(
+    _ tableView: UITableView,
+    heightForHeaderInSection section: Int)
+  -> CGFloat {
+    return 50
   }
 }
