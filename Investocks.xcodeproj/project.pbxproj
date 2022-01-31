@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440021FC27A6950700B1B662 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440021FB27A6950700B1B662 /* HeaderView.swift */; };
 		444AAAAF27A536CE00EEF1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAAE27A536CE00EEF1D9 /* AppDelegate.swift */; };
 		444AAAB127A536CE00EEF1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAB027A536CE00EEF1D9 /* SceneDelegate.swift */; };
 		444AAAB327A536CE00EEF1D9 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AAAB227A536CE00EEF1D9 /* StocksViewController.swift */; };
@@ -22,10 +23,12 @@
 		445A2D6927A59702008618F9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D6827A59702008618F9 /* NetworkManager.swift */; };
 		445A2D6F27A5A39A008618F9 /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D6E27A5A39A008618F9 /* Stocks.swift */; };
 		445A2D7127A5A3A3008618F9 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7027A5A3A3008618F9 /* Stock.swift */; };
-		445A2D7327A5A3B1008618F9 /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7227A5A3B1008618F9 /* MyPage.swift */; };
-		445A2D7527A5A3D3008618F9 /* MyPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7427A5A3D3008618F9 /* MyPages.swift */; };
-		445A2D7727A5A3DC008618F9 /* MyPageDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7627A5A3DC008618F9 /* MyPageDefault.swift */; };
+		445A2D7327A5A3B1008618F9 /* CriteriaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7227A5A3B1008618F9 /* CriteriaInfo.swift */; };
+		445A2D7527A5A3D3008618F9 /* ExchangeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7427A5A3D3008618F9 /* ExchangeInfo.swift */; };
+		445A2D7727A5A3DC008618F9 /* StockInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7627A5A3DC008618F9 /* StockInfo.swift */; };
 		445A2D7C27A5A9D1008618F9 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A2D7B27A5A9D1008618F9 /* String+Extensions.swift */; };
+		44D7288427A6F9CD00F79DA7 /* CriteriaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7288327A6F9CD00F79DA7 /* CriteriaManager.swift */; };
+		44D7288727A70CFE00F79DA7 /* Criteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7288627A70CFE00F79DA7 /* Criteria.swift */; };
 		68ACE8BB79C44F31AE45C857 /* Pods_Investocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697EBADA33B8669995C99C2E /* Pods_Investocks.framework */; };
 		7C94CAA4AE8426EC8311FAE8 /* Pods_InvestocksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF239786AF87176ECB978A7 /* Pods_InvestocksTests.framework */; };
 		FEDBC2D4092B143C6DF27470 /* Pods_Investocks_InvestocksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AC9957EF4F5770AF4B57D /* Pods_Investocks_InvestocksUITests.framework */; };
@@ -51,6 +54,7 @@
 /* Begin PBXFileReference section */
 		136262BA9D63F5B042D2DBB7 /* Pods-Investocks-InvestocksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investocks-InvestocksUITests.release.xcconfig"; path = "Target Support Files/Pods-Investocks-InvestocksUITests/Pods-Investocks-InvestocksUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3DB7A0F8634AD84B2B882E0E /* Pods-Investocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investocks.release.xcconfig"; path = "Target Support Files/Pods-Investocks/Pods-Investocks.release.xcconfig"; sourceTree = "<group>"; };
+		440021FB27A6950700B1B662 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		444AAAAB27A536CE00EEF1D9 /* Investocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444AAAAE27A536CE00EEF1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		444AAAB027A536CE00EEF1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,10 +74,12 @@
 		445A2D6827A59702008618F9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		445A2D6E27A5A39A008618F9 /* Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
 		445A2D7027A5A3A3008618F9 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		445A2D7227A5A3B1008618F9 /* MyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
-		445A2D7427A5A3D3008618F9 /* MyPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPages.swift; sourceTree = "<group>"; };
-		445A2D7627A5A3DC008618F9 /* MyPageDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDefault.swift; sourceTree = "<group>"; };
+		445A2D7227A5A3B1008618F9 /* CriteriaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteriaInfo.swift; sourceTree = "<group>"; };
+		445A2D7427A5A3D3008618F9 /* ExchangeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeInfo.swift; sourceTree = "<group>"; };
+		445A2D7627A5A3DC008618F9 /* StockInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockInfo.swift; sourceTree = "<group>"; };
 		445A2D7B27A5A9D1008618F9 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		44D7288327A6F9CD00F79DA7 /* CriteriaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteriaManager.swift; sourceTree = "<group>"; };
+		44D7288627A70CFE00F79DA7 /* Criteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Criteria.swift; sourceTree = "<group>"; };
 		697EBADA33B8669995C99C2E /* Pods_Investocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828B3E929AEA2323DBE76D7F /* Pods-InvestocksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestocksTests.release.xcconfig"; path = "Target Support Files/Pods-InvestocksTests/Pods-InvestocksTests.release.xcconfig"; sourceTree = "<group>"; };
 		975B9A0ACFC836643AC92D7C /* Pods-InvestocksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestocksTests.debug.xcconfig"; path = "Target Support Files/Pods-InvestocksTests/Pods-InvestocksTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 				445A2D6127A58C35008618F9 /* Services */,
 				445A2D6D27A5A37D008618F9 /* Helpers */,
 				445A2D7A27A5A9C0008618F9 /* Extensions */,
+				44D7288527A70CF500F79DA7 /* Enums */,
 				445A2D6C27A5A32D008618F9 /* Resources */,
 				444AAADE27A5372500EEF1D9 /* Supporting Files */,
 			);
@@ -194,9 +201,9 @@
 		444AAADF27A537B400EEF1D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				445A2D7227A5A3B1008618F9 /* MyPage.swift */,
-				445A2D7627A5A3DC008618F9 /* MyPageDefault.swift */,
-				445A2D7427A5A3D3008618F9 /* MyPages.swift */,
+				445A2D7227A5A3B1008618F9 /* CriteriaInfo.swift */,
+				445A2D7627A5A3DC008618F9 /* StockInfo.swift */,
+				445A2D7427A5A3D3008618F9 /* ExchangeInfo.swift */,
 				445A2D7027A5A3A3008618F9 /* Stock.swift */,
 				445A2D6E27A5A39A008618F9 /* Stocks.swift */,
 			);
@@ -207,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				444AAAB227A536CE00EEF1D9 /* StocksViewController.swift */,
+				440021FB27A6950700B1B662 /* HeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				445A2D6827A59702008618F9 /* NetworkManager.swift */,
+				44D7288327A6F9CD00F79DA7 /* CriteriaManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -265,6 +274,14 @@
 				445A2D7B27A5A9D1008618F9 /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		44D7288527A70CF500F79DA7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				44D7288627A70CFE00F79DA7 /* Criteria.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		75C95AD0DD3A553EF42E6CCA /* Frameworks */ = {
@@ -534,19 +551,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445A2D7727A5A3DC008618F9 /* MyPageDefault.swift in Sources */,
+				445A2D7727A5A3DC008618F9 /* StockInfo.swift in Sources */,
+				44D7288727A70CFE00F79DA7 /* Criteria.swift in Sources */,
 				445A2D6327A58C45008618F9 /* NetworkService.swift in Sources */,
-				445A2D7327A5A3B1008618F9 /* MyPage.swift in Sources */,
-				445A2D7527A5A3D3008618F9 /* MyPages.swift in Sources */,
+				445A2D7327A5A3B1008618F9 /* CriteriaInfo.swift in Sources */,
+				445A2D7527A5A3D3008618F9 /* ExchangeInfo.swift in Sources */,
 				444AAAB327A536CE00EEF1D9 /* StocksViewController.swift in Sources */,
 				444AAAAF27A536CE00EEF1D9 /* AppDelegate.swift in Sources */,
 				444AAAE627A5476F00EEF1D9 /* StocksCell.swift in Sources */,
 				445A2D6F27A5A39A008618F9 /* Stocks.swift in Sources */,
 				445A2D7C27A5A9D1008618F9 /* String+Extensions.swift in Sources */,
 				445A2D6927A59702008618F9 /* NetworkManager.swift in Sources */,
+				440021FC27A6950700B1B662 /* HeaderView.swift in Sources */,
 				444AAAB127A536CE00EEF1D9 /* SceneDelegate.swift in Sources */,
 				445A2D6727A595D6008618F9 /* StocksViewModel.swift in Sources */,
 				445A2D7127A5A3A3008618F9 /* Stock.swift in Sources */,
+				44D7288427A6F9CD00F79DA7 /* CriteriaManager.swift in Sources */,
 				445A2D6527A59589008618F9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,19 +7,28 @@
 
 import Foundation
 
-class NetworkManager {
+protocol NetworkManagerProtocol {
+  func getStocksName()
+  func getStocksInformation(completion: @escaping (Result<Stocks, Error>) -> Void)
+}
+
+class NetworkManager: NetworkManagerProtocol {
 
   /// Provides to create singleton of the **NetworkManager**.
   static let shared = NetworkManager()
-
-  /// Completes getting stock information.
-  typealias StocksCompletion = (Result<Stocks, Error>) -> Void
 
   /// Keeps the name of the stocks to be fetched.
   private var query = ""
 
   /// Checks whether fetching data of stocks is ready.
   private var reloadWhenReady: ((Result<Stocks, Error>) -> Void)?
+
+  /// Provides to create an instance of the **CriteriaManager**.
+  var criteriaManager: CriteriaManager
+
+  init(criteriaManager: CriteriaManager = CriteriaManager.shared) {
+    self.criteriaManager = criteriaManager
+  }
 
   /// Provides to get name of stocks.
   func getStocksName() {
@@ -32,8 +41,19 @@ class NetworkManager {
       switch result {
       case .success(let data):
         do {
-          let myPageDefaults = try JSONDecoder().decode(MyPages.self, from: data).mypageDefaults
-          self?.query = myPageDefaults?.compactMap { $0.cod }.joined(separator: "~") ?? ""
+          let exchangeInfo = try JSONDecoder().decode(ExchangeInfo.self, from: data)
+
+          guard
+            let stockInfos = exchangeInfo.stockInfo,
+            let criteriaInfos = exchangeInfo.criteriaInfo else {
+              return
+            }
+
+          self?.query = stockInfos.compactMap { $0.cod }.joined(separator: "~")
+
+          if self?.criteriaManager.criteria.isEmpty ?? true {
+            self?.criteriaManager.criteria = criteriaInfos
+          }
 
           if let completion = self?.reloadWhenReady {
             self?.getStocksInformation(completion: completion)
@@ -48,8 +68,9 @@ class NetworkManager {
   }
 
   /// Provides information about the selected stocks.
-  func getStocksInformation(completion: @escaping StocksCompletion) {
-    let stringURL = "\(Constants.url)/ForeksMobileInterview?fields=pdd,las&stcs=\(query)"
+  func getStocksInformation(completion: @escaping (Result<Stocks, Error>) -> Void) {
+    var stringURL = "\(Constants.baseURL)/ForeksMobileInterview?fields="
+    stringURL.append("\(criteriaManager.firstCriteria),\(criteriaManager.secondCriteria)&stcs=\(query)")
     guard !query.isEmpty,
           let url = URL(string: stringURL) else {
             reloadWhenReady = completion

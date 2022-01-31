@@ -18,17 +18,21 @@ class StocksViewModel {
   /// Notifies when stocks populated.
   var reloadTableViewClosure: (() -> Void)?
 
-  init() {
-    NetworkManager.shared.getStocksName()
+  /// Provides to create an instance of the **NetworkManagerProtocol**.
+  private let networkManager: NetworkManagerProtocol
+
+  init(networkManager: NetworkManagerProtocol = NetworkManager.shared) {
+    self.networkManager = networkManager
+    networkManager.getStocksName()
   }
 
   /// Allows to start taking stocks.
   func initFetch() {
-    NetworkManager.shared.getStocksInformation { [weak self] result in
+    networkManager.getStocksInformation { [weak self] result in
       switch result {
       case .success(let stocks):
         self?.stocks.removeAll()
-        self?.stocks = stocks.l
+        self?.stocks = stocks.list
         self?.reloadStocks?(stocks)
         self?.reloadTableViewClosure?()
       case .failure(let error):

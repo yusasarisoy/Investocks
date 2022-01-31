@@ -34,17 +34,23 @@ class StocksCell: UITableViewCell {
     return label
   }()
 
-  /// Holds the price of stock.
-  lazy var labelPrice: UILabel = {
+  /// Holds the first criteria based on the selected criteria.
+  lazy var labelFirstCriteria: UILabel = {
     let label = UILabel()
     return label
   }()
 
-  /// Holds the status change of stock.
-  lazy var labelStatusChange: UILabel = {
+  /// Holds the second criteria based on the selected criteria.
+  lazy var labelSecondCriteria: UILabel = {
     let label = UILabel()
     return label
   }()
+
+  /// Provides to create singleton of the **UserDefaults**.
+  let userDefaults = UserDefaults.standard
+
+  /// Provides to create singleton of the **CriteriaManager**.
+  var criteriaManager: CriteriaManager = CriteriaManager.shared
 
   // MARK: - Lifecycle
 
@@ -58,8 +64,8 @@ class StocksCell: UITableViewCell {
       contentView.addSubview(imageViewStatusChange)
       contentView.addSubview(labelStock)
       contentView.addSubview(labelLastUpdateTime)
-      contentView.addSubview(labelPrice)
-      contentView.addSubview(labelStatusChange)
+      contentView.addSubview(labelFirstCriteria)
+      contentView.addSubview(labelSecondCriteria)
     }
 
   override func layoutSubviews() {
@@ -74,8 +80,8 @@ class StocksCell: UITableViewCell {
     imageViewStatusChange.image = nil
     labelStock.text = nil
     labelLastUpdateTime.text = nil
-    labelPrice.text = nil
-    labelStatusChange.text = nil
+    labelFirstCriteria.text = nil
+    labelSecondCriteria.text = nil
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -93,46 +99,71 @@ class StocksCell: UITableViewCell {
     }
 
     labelStock.snp.makeConstraints { make in
-      make.top.equalTo(contentView.safeAreaLayoutGuide).inset(5)
       make.left.equalTo(imageViewStatusChange.snp.right).offset(10)
     }
 
     labelLastUpdateTime.snp.makeConstraints { make in
       make.left.equalTo(imageViewStatusChange.snp.right).offset(10)
       make.top.equalTo(labelStock.snp.bottom).offset(5)
-      make.bottom.equalToSuperview().offset(-5)
     }
 
-    labelStatusChange.snp.makeConstraints { make in
+    labelSecondCriteria.snp.makeConstraints { make in
       make.right.equalTo(contentView.safeAreaLayoutGuide).inset(10)
       make.centerY.equalToSuperview()
     }
 
-    labelPrice.snp.makeConstraints { make in
-      make.right.equalTo(labelStatusChange.snp.left).inset(-50)
+    labelFirstCriteria.snp.makeConstraints { make in
+      make.right.equalTo(labelSecondCriteria.snp.left).inset(-30)
       make.centerY.equalToSuperview()
     }
+  }
+
+  /// Determines whether to set the color of the values.
+  /// - Parameter criteria: Holds the selected criteria.
+  /// - Returns: A **Boolean** to determine if the values should be colored.
+  func textColorIfNeeded(criteria: String) -> Bool {
+    Criteria(rawValue: criteria) == .pdd || Criteria(rawValue: criteria) == .ddi
   }
 
   /// Provides to populate cell with its corresponding stock information.
   /// - Parameter stock: Holds the information about stock.
   func configure(with stock: Stock) {
-    guard let stockChange = stock.pdd,
-          let stockName = stock.tke,
-          let stockUpdatedTime = stock.clo,
-          let stockPrice = stock.las else {
-            return
-          }
+    guard
+      let stockName = stock.tke,
+      let stockUpdatedTime = stock.clo,
+      let stockPrice = stock.las
+    else {
+      return
+    }
 
-    let isNegative = stockChange.toDouble() < 0
-    let changePercentage = isNegative ? stockChange.removeFirstChar() : stockChange
+    let stockFirstValue = criteriaManager.showCriteriaValue(
+      selectedCriteria: Criteria(rawValue: criteriaManager.firstCriteria) ?? .pdd,
+      stock: stock)
+    let stockSecondValue = criteriaManager.showCriteriaValue(
+      selectedCriteria: Criteria(rawValue: criteriaManager.secondCriteria) ?? .pdd,
+      stock: stock)
+
+    let previousPrice = userDefaults.double(forKey: stockName)
+    let showPercentage = stock.ddi != nil || stock.pdd != nil
+    let isNegative = (stockPrice.toDouble() - previousPrice) < 0
+    let textColor: UIColor = isNegative ? .red : .green
+
+    userDefaults.set(stockPrice.toDouble(), forKey: stockName)
+
+    let changePercentage = showPercentage ? stockSecondValue.removeFirstChar() : stockSecondValue
     let changeImage = isNegative ? Constants.downArrow : Constants.upArrow
 
     imageViewStatusChange.image = UIImage(named: changeImage)
     labelStock.text = stockName
     labelLastUpdateTime.text = stockUpdatedTime
-    labelPrice.text = stockPrice
-    labelStatusChange.text = "%\(changePercentage)"
-    labelStatusChange.textColor = isNegative ? .red : .green
+    labelFirstCriteria.text = stockFirstValue
+    labelSecondCriteria.text = showPercentage ? "%\(changePercentage)" : changePercentage
+
+    labelFirstCriteria.textColor = textColorIfNeeded(criteria: criteriaManager.firstCriteria)
+    ? textColor
+    : UIColor.label
+    labelSecondCriteria.textColor = textColorIfNeeded(criteria: criteriaManager.secondCriteria)
+    ? textColor
+    : UIColor.label
   }
 }
