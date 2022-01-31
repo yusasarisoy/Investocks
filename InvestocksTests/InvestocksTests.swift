@@ -25,7 +25,7 @@ class InvestocksTests: XCTestCase {
 
   func testGetStocksName() throws {
     // given
-    let stringURL = "\(Constants.url)/ForeksMobileInterviewSettings"
+    let stringURL = "\(Constants.baseURL)/ForeksMobileInterviewSettings"
     guard let url = URL(string: stringURL) else {
       return
     }
@@ -53,7 +53,7 @@ class InvestocksTests: XCTestCase {
 
   func testGetStocksInformation() throws {
     // given
-    let stringURL = "\(Constants.url)/ForeksMobileInterview?fields=pdd,las&stcs=XGLD~BRENT"
+    let stringURL = "\(Constants.baseURL)/ForeksMobileInterview?fields=pdd,las&stcs=XGLD~BRENT"
     guard let url = URL(string: stringURL) else {
       return
     }

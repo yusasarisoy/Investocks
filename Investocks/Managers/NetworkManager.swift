@@ -23,7 +23,7 @@ class NetworkManager {
 
   /// Provides to get name of stocks.
   func getStocksName() {
-    let stringURL = "\(Constants.url)/ForeksMobileInterviewSettings"
+    let stringURL = "\(Constants.baseURL)/ForeksMobileInterviewSettings"
     guard let url = URL(string: stringURL) else {
       return
     }
