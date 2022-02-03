@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct CriteriaInfo: Codable {
+struct CriteriaInfo: Decodable {
   let name, key: String?
 }

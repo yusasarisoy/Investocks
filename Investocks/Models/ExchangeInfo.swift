@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExchangeInfo: Codable {
+struct ExchangeInfo: Decodable {
   let stockInfo: [StockInfo]?
   let criteriaInfo: [CriteriaInfo]?
 }

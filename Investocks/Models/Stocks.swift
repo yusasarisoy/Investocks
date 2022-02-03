@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Stocks: Codable {
+struct Stocks: Decodable {
   let list: [Stock]
   let value: String?
 }

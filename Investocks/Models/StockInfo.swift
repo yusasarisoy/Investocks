@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct StockInfo: Codable {
+struct StockInfo: Decodable {
   let cod, gro, tke, def: String?
 }
