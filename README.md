@@ -13,9 +13,3 @@ The following command will install the all libraries in the project.
 ```zsh
 pod install
 ```
-
-</br>
-
-# <b>Developer</b>
-
-If you want to contact me, send an email to yusasarisoy@icloud.com.
